@@ -1,0 +1,30 @@
+# python
+__pycache__/
+*.pyc
+*.pyo
+
+# checkpoints / models
+*.pt
+*.pth
+*.bin
+*.ckpt
+
+# datasets
+dataset/
+data/
+*.jsonl
+
+# logs
+*.log
+outputs/
+results/
+
+# system
+.DS_Store
+.env
+
+# vscode
+.vscode/
+
+#whl
+*.whl

@@ -12,7 +12,7 @@ from llava.utils import disable_torch_init
 from llava.mm_utils import tokenizer_image_token, process_images, get_model_name_from_path, process_anyres_image_for_remoteclip, get_anyres_image_grid_shape
 from torch.utils.data import Dataset, DataLoader
 
-import torch
+# import torch
 from PIL import Image
 import math
 from llava.patch_divide import LS_Image_Patch
@@ -171,7 +171,8 @@ def eval_model(args):
         # clip_processor = AutoProcessor.from_pretrained(clip_path)
 
         # # ### init RemoteCLIP
-        import torch, open_clip
+        # import torch, open_clip
+        import open_clip
         remoteclip_model_name = 'ViT-L-14' # 'RN50' or 'ViT-B-32' or 'ViT-L-14'
         remote_clip_model, _, remoteclip_preprocess = open_clip.create_model_and_transforms(remoteclip_model_name)
         remote_clip_tokenizer = open_clip.get_tokenizer(remoteclip_model_name)

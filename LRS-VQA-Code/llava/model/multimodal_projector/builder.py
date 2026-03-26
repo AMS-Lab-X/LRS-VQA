@@ -1218,7 +1218,21 @@ class PyramidPruneModule(nn.Module):
                             pool_patch_len=pool_token_num_per_tile,
                             next_lvl_index=next_level_index)
                 
-                selected_next_level_image_fea = vision_tower(selected_next_level_image_tensor)
+                # selected_next_level_image_fea = vision_tower(selected_next_level_image_tensor)
+                # selected_next_level_image_fea = mlp_projector(selected_next_level_image_fea)
+                # selected_next_level_image_fea = get_2dPool_bilinear(selected_next_level_image_fea, vision_tower)
+
+                N_tiles = selected_next_level_image_tensor.size(0)
+                chunk_size = 2
+                feature_chunks = []
+
+                for i in range(0, N_tiles, chunk_size):
+                    chunk = selected_next_level_image_tensor[i:i + chunk_size]
+                    feat = vision_tower(chunk)
+                    feature_chunks.append(feat)
+
+                selected_next_level_image_fea = torch.cat(feature_chunks, dim=0)
+
                 selected_next_level_image_fea = mlp_projector(selected_next_level_image_fea)
                 selected_next_level_image_fea = get_2dPool_bilinear(selected_next_level_image_fea, vision_tower)
                 
