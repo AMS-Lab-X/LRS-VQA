@@ -9,15 +9,15 @@ __pycache__/
 *.bin
 *.ckpt
 
-# datasets
-dataset/
-data/
-*.jsonl
+# # datasets
+# dataset/
+# data/
+# *.jsonl
 
-# logs
-*.log
-outputs/
-results/
+# # logs
+# *.log
+# outputs/
+# results/
 
 # system
 .DS_Store
